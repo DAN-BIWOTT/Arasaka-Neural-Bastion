@@ -17,6 +17,8 @@ class ArasakaTradingTimeline extends Model
         'test_mae', 'train_r2', 'test_r2', 'train_explained_variance', 'test_explained_variance',
         // Scaling Parameters
         'scaling_mean', 'scaling_std_dev',
+        // Environment
+        'model_env'
     ];
     
     protected $casts = [

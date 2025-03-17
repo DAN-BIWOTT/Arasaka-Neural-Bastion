@@ -215,7 +215,7 @@
     <div class="table-container">
         <table>
             <tr>
-                <th>Week</th>
+                <th>February</th>
                 <th>Test</th>
                 <th colspan="4">Live</th>
                 <th>Comment</th>

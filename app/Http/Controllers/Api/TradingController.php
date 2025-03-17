@@ -17,6 +17,8 @@ class TradingController extends Controller
     {
         $data = $request->validate([
             'model_name' => 'required|string',
+            // 'model_env' => 'required|string',
+            'model_env' => 'nullable|string', // 🤖 This is temporary. There are currently two versions. The current Production version doesn't include the environment.
             'features' => 'required|array',
             'scaling_mean' => 'nullable|array',
             'scaling_std_dev' => 'nullable|array',
