@@ -212,7 +212,7 @@
     <h1>Arasaka Trading Systems Report - February 2025</h1>
 
     <!-- TABLE -->
-    <div class="table-container">
+    {{-- <div class="table-container">
         <table>
             <tr>
                 <th>February</th>
@@ -264,6 +264,61 @@
                 <td></td>
                 <td></td>
                 <td>Trade</td>
+            </tr>
+        </table>
+    </div> --}}
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>March</th>
+                <th>Test</th>
+                <th colspan="4">Live</th>
+                <th>Comment</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Week 1</td>
+                <td class="highlight"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Week 2</td>
+                <td class="highlight"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Week 3</td>
+                <td class="highlight"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Week 4</td>
+                <td class="highlight"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
     </div>
