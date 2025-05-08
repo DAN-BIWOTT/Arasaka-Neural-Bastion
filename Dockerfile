@@ -1,38 +1,29 @@
-# Use official PHP image with Apache
 FROM php:8.2-apache
 
-# Enable mod_rewrite
-RUN a2enmod rewrite
-
-# Install system dependencies and PHP extensions
+# Install dependencies
 RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    zip \
-    unzip \
-    git \
-    curl \
-    libsqlite3-dev \
-    sqlite3 \
-    && docker-php-ext-configure zip \
+    libzip-dev zip unzip git curl sqlite3 \
     && docker-php-ext-install pdo pdo_sqlite zip
 
-# Install Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Enable mod_rewrite for Apache and set the default DirectoryIndex
+RUN a2enmod rewrite && \
+    echo "DirectoryIndex public/index.php" >> /etc/apache2/apache2.conf
 
-# Set working directory
+# Set the document root to the public directory
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
+
+# Copy Laravel app to the container
+COPY . /var/www/html
+
+# Set working directory to the Laravel root
 WORKDIR /var/www/html
 
-# Copy app files
-COPY . .
-
-# Install PHP dependencies
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Set permissions
-RUN chown -R www-data:www-data storage bootstrap/cache
+# Install Composer and Laravel dependencies
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-dev --optimize-autoloader
 
 # Expose port 80
 EXPOSE 80
 
-# Start Apache
+# Run Apache in the foreground
 CMD ["apache2-foreground"]
