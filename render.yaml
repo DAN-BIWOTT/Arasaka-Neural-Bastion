@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: laravel-sqlite
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    buildCommand: |
+      touch database/database.sqlite
+      php artisan migrate --force
+    startCommand: apache2-foreground
+    autoDeploy: true
+    envVars:
+      - key: APP_KEY
+        value: base64:YOUR_KEY_HERE
+      - key: APP_ENV
+        value: production
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/www/html/database/database.sqlite
