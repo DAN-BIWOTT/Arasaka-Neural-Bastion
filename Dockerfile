@@ -39,5 +39,14 @@ RUN composer install --no-dev --no-interaction --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
 
+# Copy the entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Use the script as the container entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+    
 # Expose Apache port
 EXPOSE 80
