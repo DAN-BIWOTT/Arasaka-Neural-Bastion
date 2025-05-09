@@ -22,6 +22,9 @@ COPY . .
 # Copy the Apache config
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
+RUN touch /var/www/html/database/database.sqlite && \
+    chown -R www-data:www-data /var/www/html/database
+
 # After copying the Laravel project
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
