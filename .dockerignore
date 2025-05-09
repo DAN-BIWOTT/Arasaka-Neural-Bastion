@@ -1,0 +1,9 @@
+# Ignore unnecessary stuff
+.git
+vendor
+node_modules
+storage/logs
+.env.*
+*.log
+*.sqlite
+*.bak
